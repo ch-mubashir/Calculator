@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#222222">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator | Standard &amp; Scientific</title>
+</head>
+<body>
+    <main class="calculator" aria-label="Calculator">
+        <header class="calculator-header">
+            <button class="hamburger-btn" id="calcMenuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="calcSidebar">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </button>
+            <h1 class="font" id="modeTitle">STANDARD</h1>
+        </header>
+
+        <aside class="calc-sidebar" id="calcSidebar" aria-label="Calculator modes and history" aria-hidden="true" inert>
+            <nav class="mode-list" aria-label="Calculator mode">
+                <button class="sidebar-item active-mode" type="button" id="btnModeStandard" data-action="mode" data-value="Standard" aria-pressed="true">Standard</button>
+                <button class="sidebar-item" type="button" id="btnModeScientific" data-action="mode" data-value="Scientific" aria-pressed="false">Scientific</button>
+            </nav>
+            <div class="history-header">
+                <h2>Past calculations</h2>
+                <button type="button" id="clearHistoryBtn" data-action="clear-history" aria-label="Clear calculation history" title="Clear history">Clear</button>
+            </div>
+            <div id="historyLogContainer" aria-label="Past calculations"><p class="empty-history">No history yet</p></div>
+        </aside>
+
+        <label class="sr-only" for="display">Expression</label>
+        <input type="text" id="display" inputmode="decimal" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="200" placeholder="0" aria-describedby="feedback">
+        <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+
+        <div id="standardKeypad" class="keypad" aria-label="Standard calculator keys">
+            <div class="key-row">
+                <button type="button" data-action="clear" class="operator-ac">ALL-CLEAR</button>
+                <button type="button" data-action="delete" class="operator-del">DEL</button>
+                <button type="button" data-action="percent" class="operator-percent">%</button>
+                <button type="button" data-action="operator" data-value="/" class="operator-div">÷</button>
+            </div>
+            <div class="key-row">
+                <button type="button" data-action="number" data-value="7">7</button><button type="button" data-action="number" data-value="8">8</button><button type="button" data-action="number" data-value="9">9</button><button type="button" data-action="operator" data-value="*" class="operator-multy">×</button>
+            </div>
+            <div class="key-row">
+                <button type="button" data-action="number" data-value="4">4</button><button type="button" data-action="number" data-value="5">5</button><button type="button" data-action="number" data-value="6">6</button><button type="button" data-action="operator" data-value="-" class="operator-subt">−</button>
+            </div>
+            <div class="key-row">
+                <button type="button" data-action="number" data-value="1">1</button><button type="button" data-action="number" data-value="2">2</button><button type="button" data-action="number" data-value="3">3</button><button type="button" data-action="operator" data-value="+" class="operator-add">+</button>
+            </div>
+            <div class="key-row">
+                <button type="button" data-action="number" data-value="00">00</button><button type="button" data-action="number" data-value="0">0</button><button type="button" data-action="decimal">.</button><button type="button" data-action="calculate" class="equal">=</button>
+            </div>
+        </div>
+
+        <div id="scientificKeypad" class="keypad" aria-label="Scientific calculator keys" hidden>
+            <div class="key-row">
+                <button type="button" class="tri" id="sqrtBtn" data-action="scientific" data-value="sqrt">√</button>
+                <button type="button" class="tri" id="logBtn" data-action="scientific" data-value="log">log</button>
+                <button type="button" data-action="delete" class="operator-del">DEL</button>
+                <button type="button" data-action="clear" class="operator-ac">AC</button>
+            </div>
+            <div class="key-row">
+                <button type="button" class="tri" id="sinBtn" data-action="scientific" data-value="sin">sin</button>
+                <button type="button" class="tri" id="cosBtn" data-action="scientific" data-value="cos">cos</button>
+                <button type="button" class="tri" id="tanBtn" data-action="scientific" data-value="tan">tan</button>
+                <button type="button" class="tri" data-action="constant" data-value="π">π</button>
+            </div>
+            <div class="key-row">
+                <button type="button" data-action="parenthesis" data-value="(" class="tri">(</button>
+                <button type="button" data-action="parenthesis" data-value=")" class="tri">)</button>
+                <button type="button" data-action="operator" data-value="^" class="tri" aria-label="Power">xʸ</button>
+                <button type="button" data-action="percent" class="operator-percent">%</button>
+            </div>
+            <div class="key-row">
+                <button type="button" data-action="number" data-value="7">7</button><button type="button" data-action="number" data-value="8">8</button><button type="button" data-action="number" data-value="9">9</button><button type="button" data-action="operator" data-value="/" class="operator-div">÷</button>
+            </div>
+            <div class="key-row">
+                <button type="button" data-action="number" data-value="4">4</button><button type="button" data-action="number" data-value="5">5</button><button type="button" data-action="number" data-value="6">6</button><button type="button" data-action="operator" data-value="*" class="operator-multy">×</button>
+            </div>
+            <div class="key-row">
+                <button type="button" data-action="number" data-value="1">1</button><button type="button" data-action="number" data-value="2">2</button><button type="button" data-action="number" data-value="3">3</button><button type="button" data-action="operator" data-value="-" class="operator-subt">−</button>
+            </div>
+            <div class="key-row">
+                <button type="button" data-action="shift" id="shiftBtn" aria-pressed="false">Shift</button>
+                <button type="button" data-action="number" data-value="0">0</button><button type="button" data-action="decimal">.</button><button type="button" data-action="calculate" class="equal">=</button>
+            </div>
+            <div class="key-row extra-row">
+                <button type="button" data-action="scientific" data-value="ln" class="tri">ln</button>
+                <button type="button" data-action="constant" data-value="e" class="tri">e</button>
+                <button type="button" data-action="sign" class="tri">±</button>
+                <button type="button" data-action="scientific" data-value="inv" class="tri">1/x</button>
+            </div>
+        </div>
+        <p class="keyboard-hint"></p>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
